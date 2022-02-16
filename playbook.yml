@@ -1,0 +1,7 @@
+---
+- name: apply roles
+  hosts: localhost
+  become: no
+
+  roles:
+    - brew

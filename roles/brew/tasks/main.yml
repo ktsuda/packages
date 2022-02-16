@@ -1,0 +1,70 @@
+---
+- name: update brew cache
+  become: no
+  homebrew:
+    update_homebrew: yes
+    upgrade_all: no
+  changed_when: false
+  when: ansible_os_family == 'Darwin'
+  failed_when: false
+
+- name: be sure if each tap repository is present
+  become: no
+  homebrew_tap:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - homebrew/cask
+    - homebrew/cask-fonts
+    - zegervdv/zathura
+    - beeftornado/rmtree
+
+- name: be sure if each basic package is present
+  become: no
+  homebrew:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - stow
+    - unzip
+    - wget
+    - tree
+    - ghq
+    - tmux
+    - tig
+    - zsh
+    - zsh-completions
+    - zsh-autosuggestions
+
+- name: be sure if each nvim-related package is present
+  become: no
+  homebrew:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - neovim
+    - tree-sitter
+    - clang-format
+    - black
+    - stylua
+    - texlab
+    - fish
+    - shfmt
+    - ripgrep
+
+- name: be sure if each oai-related package is present
+  become: no
+  homebrew:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - scrcpy
+
+- name: be sure if each cask package is present
+  become: no
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - iterm2
+    - font-hack-nerd-font
