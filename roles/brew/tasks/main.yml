@@ -5,8 +5,6 @@
     update_homebrew: yes
     upgrade_all: no
   changed_when: false
-  when: ansible_os_family == 'Darwin'
-  failed_when: false
 
 - name: be sure if each tap repository is present
   become: no
