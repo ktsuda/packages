@@ -14,7 +14,6 @@
   loop:
     - homebrew/cask
     - homebrew/cask-fonts
-    - zegervdv/zathura
     - beeftornado/rmtree
 
 - name: be sure if each basic package is present
@@ -23,9 +22,11 @@
     name: "{{ item }}"
     state: present
   loop:
+    - ansible
     - stow
     - unzip
     - wget
+    - cmake
     - tree
     - ghq
     - tmux
@@ -33,6 +34,8 @@
     - zsh
     - zsh-completions
     - zsh-autosuggestions
+    - fzf
+    - minikube
 
 - name: be sure if each nvim-related package is present
   become: no
@@ -41,14 +44,22 @@
     state: present
   loop:
     - neovim
-    - tree-sitter
     - clang-format
     - black
     - stylua
-    - texlab
-    - fish
     - shfmt
     - ripgrep
+    - fd
+
+- name: be sure if each nvim-related pip module is present
+  become: no
+  pip:
+    executable: pip3
+    extra_args: "--user --upgrade"
+    name:
+      - pynvim
+      - codespell
+    state: present
 
 - name: be sure if each oai-related package is present
   become: no
@@ -66,3 +77,15 @@
   loop:
     - iterm2
     - font-hack-nerd-font
+    - slack
+    - brave-browser
+    - notion
+    - maestral
+    - appcleaner
+    - kindle
+    - jasper
+    - visual-studio-code
+    - toggl-track
+    - zoom
+    - karabiner-elements
+    - soulver

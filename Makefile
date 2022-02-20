@@ -3,7 +3,7 @@ ansible:
 	@brew update
 	@brew install ansible
 apply:
-	@ansible-playbook -i inventory playbook.yml
+	@ansible-playbook -i hosts site.yml
 
 vars:
 	@ansible -m setup localhost
