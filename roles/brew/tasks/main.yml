@@ -35,7 +35,10 @@
     - zsh-completions
     - zsh-autosuggestions
     - fzf
-    - minikube
+    - colima
+    - docker
+    - docker-compose
+    - kubectl
 
 - name: be sure if each nvim-related package is present
   become: no
