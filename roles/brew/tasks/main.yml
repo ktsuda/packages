@@ -38,6 +38,7 @@
     - colima
     - docker
     - docker-compose
+    - docker-credential-helper
     - kubectl
 
 - name: be sure if each nvim-related package is present
