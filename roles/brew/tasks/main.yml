@@ -23,6 +23,7 @@
     name: "{{ item }}"
     state: present
   loop:
+    - coreutils
     - ansible
     - stow
     - unzip
